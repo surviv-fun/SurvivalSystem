@@ -168,28 +168,7 @@ subprojects {
         jar {
             this.archiveClassifier.set(null as String?)
             this.archiveFileName.set("${project.name}-${project.version}-${commit}.${this.archiveExtension.getOrElse("jar")}")
-            this.destinationDirectory.set(file("$projectDir/../out/original"))
-        }
-
-        shadowJar {
-            this.archiveClassifier.set(null as String?)
-            this.archiveFileName.set("${project.name}-${commit}.${this.archiveExtension.getOrElse("jar")}")
-            this.destinationDirectory.set(file("$projectDir/../out"))
-            exclude("META-INF/**")
-            doFirst {
-                //Set Manifest
-                manifest {
-                    attributes["Implementation-Title"] = project.name
-                    attributes["Implementation-Version"] = project.version
-                    attributes["Specification-Version"] = project.version
-                    attributes["Implementation-Vendor"] = "surviv.fun"
-                    attributes["Built-By"] = System.getProperty("user.name")
-                    attributes["Build-Jdk"] = System.getProperty("java.version")
-                    attributes["Created-By"] = "Gradle ${gradle.gradleVersion}"
-                    attributes["Surviv-AppId"] = rootProject.name
-                    attributes["Commit-Hash"] = commit
-                }
-            }
+            this.destinationDirectory.set(file("$projectDir/../out/unshaded"))
         }
 
         processResources {

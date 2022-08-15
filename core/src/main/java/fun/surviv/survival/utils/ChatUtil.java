@@ -101,8 +101,8 @@ public class ChatUtil {
                                 .playerMeta(sender.getUniqueId())
                                 .getMetaValue("username-color")
                                 : ((perms.groupMeta(senderGroup).getMetaValue("username-color") != null) ? perms
-                                        .groupMeta(senderGroup)
-                                        .getMetaValue("username-color") : "")
+                                .groupMeta(senderGroup)
+                                .getMetaValue("username-color") : "")
                 )
                 .replace(
                         "{message-color}",
@@ -111,8 +111,8 @@ public class ChatUtil {
                                 .playerMeta(sender.getUniqueId())
                                 .getMetaValue("message-color")
                                 : ((perms.groupMeta(senderGroup).getMetaValue("message-color") != null) ? perms
-                                        .groupMeta(senderGroup)
-                                        .getMetaValue("message-color") : "")
+                                .groupMeta(senderGroup)
+                                .getMetaValue("message-color") : "")
                 );
         format = replacePlaceholders(sender, format);
         Component toSend = Component.empty();

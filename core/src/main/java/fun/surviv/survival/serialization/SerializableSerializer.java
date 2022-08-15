@@ -22,11 +22,7 @@ package fun.surviv.survival.serialization;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.Serializable;
+import java.io.*;
 import java.util.Base64;
 
 /**

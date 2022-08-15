@@ -78,7 +78,7 @@ public abstract class SurvivBoss extends AbstractSurvivBossEntity implements Sur
             } catch (Exception exception) {
                 fullList[id] = new _BossUnknown();
             }
-            if(!fullMap.containsKey(fullList[id].getNamespacedKey())) fullMap.put(fullList[id].getNamespacedKey(), fullList[id]);
+            if (!fullMap.containsKey(fullList[id].getNamespacedKey())) fullMap.put(fullList[id].getNamespacedKey(), fullList[id]);
         }
     }
 

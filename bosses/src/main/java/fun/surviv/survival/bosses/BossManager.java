@@ -19,6 +19,7 @@
 
 package fun.surviv.survival.bosses;
 
+import fun.surviv.survival.SurvivMobMechanics;
 import fun.surviv.survival.bosses.listener.SurvivBossListeners;
 import fun.surviv.survival.bosses.timings.TimingsManager;
 import lombok.Getter;
@@ -39,7 +40,10 @@ public class BossManager {
     @Getter
     private final SurvivBossListeners listeners;
 
-    public BossManager(JavaPlugin plugin) {
+    @Getter
+    private SurvivMobMechanics mobMechanics;
+
+    public BossManager(JavaPlugin plugin, SurvivMobMechanics mechanics) {
         this.plugin = plugin;
         timingsManager = new TimingsManager(this);
         this.listeners = new SurvivBossListeners(this);

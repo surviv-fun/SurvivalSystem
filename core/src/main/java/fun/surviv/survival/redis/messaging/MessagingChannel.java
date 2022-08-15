@@ -36,6 +36,10 @@ import java.util.function.Consumer;
  */
 public interface MessagingChannel {
 
+    static MessagingChannel newChannel(String name, MessagingProvider service) {
+        return new DefaultChannel(name, service);
+    }
+
     String getName();
 
     MessagingCommandMap commandMap();
@@ -49,6 +53,19 @@ public interface MessagingChannel {
     MessagingProvider service();
 
     void onMessage(Consumer<String> message);
+
+    enum Sep {
+        CMD("//::\\\\");
+        public String s;
+
+        Sep(String s) {
+            this.s = s;
+        }
+
+        public String get() {
+            return this.s;
+        }
+    }
 
     class DefaultChannel implements MessagingChannel {
 
@@ -151,23 +168,6 @@ public interface MessagingChannel {
             messageHandlers.add(message);
         }
 
-    }
-
-    enum Sep {
-        CMD("//::\\\\");
-        public String s;
-
-        Sep(String s) {
-            this.s = s;
-        }
-
-        public String get() {
-            return this.s;
-        }
-    }
-
-    static MessagingChannel newChannel(String name, MessagingProvider service) {
-        return new DefaultChannel(name, service);
     }
 
 }

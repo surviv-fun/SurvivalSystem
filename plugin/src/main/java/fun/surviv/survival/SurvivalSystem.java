@@ -23,25 +23,9 @@ import com.google.common.collect.Lists;
 import fun.surviv.survival.bosses.BossManager;
 import fun.surviv.survival.bosses.command.BossCommand;
 import fun.surviv.survival.configuration.JsonConfig;
-import fun.surviv.survival.configuration.defaults.DefaultChatConfig;
-import fun.surviv.survival.configuration.defaults.DefaultDamageContig;
-import fun.surviv.survival.configuration.defaults.DefaultDatabaseConfig;
-import fun.surviv.survival.configuration.defaults.DefaultDebugConfig;
-import fun.surviv.survival.configuration.defaults.DefaultNerfControlConfig;
-import fun.surviv.survival.configuration.defaults.DefaultPluginConfig;
-import fun.surviv.survival.configuration.defaults.DefaultTimeControlConfig;
-import fun.surviv.survival.configuration.types.ChatConfig;
-import fun.surviv.survival.configuration.types.DamageContig;
-import fun.surviv.survival.configuration.types.DatabaseConfig;
-import fun.surviv.survival.configuration.types.DebugConfig;
-import fun.surviv.survival.configuration.types.NerfControlConfig;
-import fun.surviv.survival.configuration.types.PluginConfig;
-import fun.surviv.survival.configuration.types.TimeControlConfig;
-import fun.surviv.survival.listener.DefaultDamageListener;
-import fun.surviv.survival.listener.DefaultEntitySpawmListener;
-import fun.surviv.survival.listener.DefaultGrowAndSpreadListener;
-import fun.surviv.survival.listener.DefaultPlayerListener;
-import fun.surviv.survival.listener.DefaultTimeListener;
+import fun.surviv.survival.configuration.defaults.*;
+import fun.surviv.survival.configuration.types.*;
+import fun.surviv.survival.listener.*;
 import fun.surviv.survival.namespace.Namespaces;
 import fun.surviv.survival.permissions.PermissionManager;
 import fun.surviv.survival.players.PlayerProvider;
@@ -102,6 +86,9 @@ public class SurvivalSystem extends JavaPlugin {
     @Getter
     private BossManager bossManager;
 
+    @Getter
+    private SurvivMobMechanics mobMechanics;
+
     public static void debug(String... messages) {
         for (String message : messages) {
             System.out.println(message);
@@ -131,7 +118,8 @@ public class SurvivalSystem extends JavaPlugin {
         Namespaces.init(this.getName().toLowerCase());
         this.registerCommandsAndListeners();
 
-        bossManager = new BossManager(instance);
+        mobMechanics = new SurvivMobMechanics(this);
+        bossManager = new BossManager(this, mobMechanics);
 
         // hopefully when world loaded
         (new BukkitRunnable() {

@@ -32,10 +32,9 @@ import org.bukkit.NamespacedKey;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class Namespaces {
 
-    private static String namespaceName;
-
     public static NamespacedKey MOB_LEVEL;
     public static NamespacedKey BOSS_TYPE;
+    private static String namespaceName;
 
     public static void init(String name) {
         namespaceName = name;

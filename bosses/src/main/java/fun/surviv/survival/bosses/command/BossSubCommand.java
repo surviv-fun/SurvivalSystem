@@ -32,6 +32,8 @@ import java.util.List;
  */
 public interface BossSubCommand {
     String getPermission();
+
     boolean executeSubCommand(@NotNull CommandSender sender, @NotNull List<String> args);
+
     List<String> tabCompleteSubCommand(@NotNull CommandSender sender, @NotNull String label, List<String> args);
 }

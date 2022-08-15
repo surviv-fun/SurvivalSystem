@@ -33,6 +33,14 @@ import java.util.Collection;
  */
 public interface MessagingProvider {
 
+    static Object deserialized(String serializable) {
+        return SerializableSerializer.deserialize(serializable);
+    }
+
+    static String serialized(Serializable serializable) {
+        return SerializableSerializer.serialize(serializable);
+    }
+
     RedisClient redis();
 
     Collection<MessagingChannel> messagingChannels();
@@ -46,14 +54,6 @@ public interface MessagingProvider {
     }
 
     default String serialize(Serializable serializable) {
-        return SerializableSerializer.serialize(serializable);
-    }
-
-    static Object deserialized(String serializable) {
-        return SerializableSerializer.deserialize(serializable);
-    }
-
-    static String serialized(Serializable serializable) {
         return SerializableSerializer.serialize(serializable);
     }
 

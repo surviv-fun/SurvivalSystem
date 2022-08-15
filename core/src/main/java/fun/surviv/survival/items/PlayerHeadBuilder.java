@@ -46,7 +46,7 @@ public class PlayerHeadBuilder {
 
     public PlayerHeadBuilder owner(String owner) throws IllegalArgumentException {
         this.ownerUuid = MinecraftAccountValidator.resolveUUID(owner);
-        if(this.ownerUuid == null) throw new IllegalArgumentException("This player does not exist at the mojang database!");
+        if (this.ownerUuid == null) throw new IllegalArgumentException("This player does not exist at the mojang database!");
         return this;
     }
 

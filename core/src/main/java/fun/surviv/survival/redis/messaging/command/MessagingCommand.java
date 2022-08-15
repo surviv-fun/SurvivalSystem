@@ -46,12 +46,12 @@ public abstract class MessagingCommand {
         return name;
     }
 
-    public void setAliases(List<String> aliases) {
-        this.aliases = aliases;
-    }
-
     public List<String> getAliases() {
         return aliases;
+    }
+
+    public void setAliases(List<String> aliases) {
+        this.aliases = aliases;
     }
 
 }

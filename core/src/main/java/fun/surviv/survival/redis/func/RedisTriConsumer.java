@@ -30,8 +30,9 @@ import java.util.function.Function;
  */
 @FunctionalInterface
 public
-interface RedisTriConsumer<A,B,C,R> {
+interface RedisTriConsumer<A, B, C, R> {
     R accept(A a, B b, C c);
+
     default <V> RedisTriConsumer<A, B, C, V> andThen(Function<? super R, ? extends V> after) {
         Objects.requireNonNull(after);
         return (A a, B b, C c) -> after.apply(accept(a, b, c));

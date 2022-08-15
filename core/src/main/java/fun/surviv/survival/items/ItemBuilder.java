@@ -147,6 +147,14 @@ public class ItemBuilder {
             this.ignoreLevelRestrictions = ignoreLevelRestrictions;
         }
 
+        public static EnchantmentBuilder build(Enchantment enchantment, int level) {
+            return new EnchantmentBuilder(enchantment, level);
+        }
+
+        public static EnchantmentBuilder build(Enchantment enchantment, int level, boolean ignoreLevelRestrictions) {
+            return new EnchantmentBuilder(enchantment, level, ignoreLevelRestrictions);
+        }
+
         public Enchantment getType() {
             return type;
         }
@@ -157,14 +165,6 @@ public class ItemBuilder {
 
         public boolean isIgnoreLevelRestrictions() {
             return ignoreLevelRestrictions;
-        }
-
-        public static EnchantmentBuilder build(Enchantment enchantment, int level) {
-            return new EnchantmentBuilder(enchantment, level);
-        }
-
-        public static EnchantmentBuilder build(Enchantment enchantment, int level, boolean ignoreLevelRestrictions) {
-            return new EnchantmentBuilder(enchantment, level, ignoreLevelRestrictions);
         }
 
     }

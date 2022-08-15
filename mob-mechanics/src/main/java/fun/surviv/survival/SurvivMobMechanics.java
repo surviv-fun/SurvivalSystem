@@ -19,6 +19,10 @@
 
 package fun.surviv.survival;
 
+import fun.surviv.survival.ai.MobAI;
+import lombok.Getter;
+import org.bukkit.plugin.java.JavaPlugin;
+
 /**
  * SurvivalSystem; fun.surviv.survival:SurvivMobMechanics
  *
@@ -26,8 +30,13 @@ package fun.surviv.survival;
  * @since 15.08.2022
  */
 public class SurvivMobMechanics {
+    @Getter
+    private JavaPlugin plugin;
+    @Getter
+    private MobAI aiManager;
 
-    public SurvivMobMechanics() {
+    public SurvivMobMechanics(JavaPlugin plugin) {
+        this.aiManager = new MobAI(plugin);
     }
 
 }
