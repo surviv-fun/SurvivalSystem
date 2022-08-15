@@ -1,0 +1,18 @@
+name: SurvivalSystem
+version: ${project.version}
+api-version: 1.19
+main: fun.surviv.survival.SurvivalSystem
+description: Dieses Plugin added dem surviv Server generelle Funktionen und Commands.
+authors:
+  - LuciferMorningstarDev
+
+website: https://lucifer-morningstar.dev/
+
+depend:
+  - LuckPerms
+
+softdepend:
+  - PlaceholderAPI
+  - ProtocolLib
+
+load: STARTUP

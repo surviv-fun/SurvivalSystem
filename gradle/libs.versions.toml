@@ -1,0 +1,38 @@
+[versions]
+
+# Gradle plugins
+shadow = "7.1.2"
+grgit = "4.1.1"
+licenser = "0.6.1"
+lombok = "6.5.0.3"
+
+# mc
+paper = "1.19.2-R0.1-SNAPSHOT"
+paperdev = "1.3.8"
+runpaper = "1.0.6"
+kyori = "4.11.0"
+mongo = "4.7.1"
+jedis = "4.3.0-m1"
+
+# plugin apis
+luckperms = "5.4"
+
+# libs
+gson = "2.9.1"
+
+[plugins]
+# Gradle plugins
+shadow = { id = "com.github.johnrengelman.shadow", version.ref = "shadow" }
+grgit = { id = "org.ajoberstar.grgit", version.ref = "grgit" }
+licenser = { id = "org.cadixdev.licenser", version.ref = "licenser" }
+lombok = { id = "io.freefair.lombok", version.ref = "lombok" }
+paperdev = { id = "io.papermc.paperweight.userdev", version.ref = "paperdev" }
+runpaper = { id = "xyz.jpenilla.run-paper", version.ref = "runpaper" }
+
+[libraries]
+paper = { group = "io.papermc.paper", name = "paper-api", version.ref = "paper" }
+gson = { group = "com.google.code.gson", name = "gson", version.ref = "gson" }
+mongo = { group = "org.mongodb", name = "mongodb-driver-legacy", version.ref = "mongo" }
+jedis = { group = "redis.clients", name = "jedis", version.ref = "jedis" }
+kyori = { group = "net.kyori", name = "adventure-text-serializer-legacy", version.ref = "kyori" }
+luckperms = { group = "net.luckperms", name = "api", version.ref = "luckperms" }
