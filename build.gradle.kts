@@ -13,6 +13,8 @@ plugins {
     alias(libs.plugins.licenser)
     alias(libs.plugins.lombok)
 
+    //alias(libs.plugins.paperdev)
+
     eclipse
     idea
 }
@@ -39,6 +41,8 @@ val commit: String? = commitHash()
 
 repositories {
     maven { url = uri("https://plugins.gradle.org/m2/") }
+    mavenCentral()
+    mavenLocal()
 }
 
 subprojects {
@@ -46,10 +50,19 @@ subprojects {
     version = rootProject.version
 
     repositories {
-        mavenCentral()
         maven { url = uri("https://plugins.gradle.org/m2/") }
         maven { url = uri("https://oss.sonatype.org/content/repositories/snapshots/") }
+        maven { url = uri("https://oss.sonatype.org/content/repositories/central/") }
+        maven {
+            url = uri("https://hub.spigotmc.org/nexus/content/repositories/snapshots/")
+            content {
+                includeGroup("org.bukkit")
+                includeGroup("org.spigotmc")
+            }
+        }
         maven { url = uri("https://repo.papermc.io/repository/maven-public/") }
+        mavenCentral()
+        mavenLocal()
     }
 
     apply {
@@ -62,6 +75,7 @@ subprojects {
         plugin<EclipsePlugin>()
         plugin<IdeaPlugin>()
         plugin("io.freefair.lombok")
+        //plugin("io.papermc.paperweight.userdev")
     }
 
     tasks.compileJava.configure {
