@@ -3,20 +3,6 @@ import org.apache.commons.io.output.ByteArrayOutputStream
 import org.cadixdev.gradle.licenser.LicenseExtension
 import org.cadixdev.gradle.licenser.Licenser
 
-fun commitHash(): String {
-    val stdout = ByteArrayOutputStream()
-    project.exec {
-        commandLine = "git describe --long".split(" ")
-        standardOutput = stdout
-    }
-    var hash: String? = null
-    hash = String(stdout.toByteArray()).trim()
-    if(hash == null || hash == "") {
-        hash = "000000"
-    }
-    return hash
-}
-
 plugins {
     id("java")
     id("java-library")
@@ -31,16 +17,33 @@ plugins {
     idea
 }
 
+fun commitHash(): String {
+    val stdout = ByteArrayOutputStream()
+    project.exec {
+        commandLine = "git rev-parse main".split(" ")
+        standardOutput = stdout
+    }
+    var hash: String? = null
+    hash = String(stdout.toByteArray()).trim()
+    if (hash == null || hash == "") {
+        hash = "000000"
+    }
+    return hash
+}
+
 group = "fun.surviv.survival"
 version = "1.0-SNAPSHOT"
 description = "Survival System for surviv.fun"
 
 val commit: String? = commitHash()
 
+repositories {
+    maven { url = uri("https://plugins.gradle.org/m2/") }
+}
+
 subprojects {
     group = rootProject.group
     version = rootProject.version
-    description = rootProject.description
 
     repositories {
         mavenCentral()
@@ -104,9 +107,6 @@ subprojects {
             }
             publications {
                 create<MavenPublication>(project.name) {
-                    groupId = project.group as String?
-                    artifactId = project.name
-                    version = project.version as String?
                     from(components["java"])
                     pom {
                         name.set(project.name)
